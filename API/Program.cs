@@ -1,3 +1,6 @@
+using Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,8 +10,14 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
 var app = builder.Build();
 
+builder.Services.AddDbContext<NotiAppContext>(options =>
+{
+    string connectionString = builder.Configuration.GetConnectionString("MySqlConnect");
+    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+});
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
