@@ -8,6 +8,5 @@ namespace Core.Entities;
 public class SubModulo : BaseEntity
 {
     public string NombreSubModulo { get; set; }
-    public DateTime FechaCreacion { get; set; }
-    public DateTime FechaModificacion { get; set; }
+    public ICollection<MaestroVsSubmodulos> MaestroVsSubmodulos { get; set; }
 }

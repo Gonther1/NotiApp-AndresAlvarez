@@ -9,4 +9,5 @@ public class Auditoria : BaseEntity
 {
     public string NombreUsuario { get; set; }
     public int DescAccion { get; set; }
+    public ICollection<BlockChain> BlockChains { get; set; }
 }
