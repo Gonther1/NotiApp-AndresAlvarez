@@ -6,6 +6,6 @@ using Core.Entities;
 
 namespace Core.Interfaces;
 
-public interface IModuloNotificacionRepository : IGenericRepository<ModuloNotificacion>
+public interface IHiloRespuestaNotificacionRepository : IGenericRepository<HiloRespuestaNotificacion>
 {
 }
