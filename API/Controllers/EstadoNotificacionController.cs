@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 namespace API.Controllers;
+
 public class EstadoNotificacionController : BaseController
 {
     private readonly IUnitOfWork _unitOfWork;
@@ -28,8 +29,8 @@ public class EstadoNotificacionController : BaseController
 
     public async Task<ActionResult<IEnumerable<EstadoNotificacionDto>>> Get()
     {
-        var estadosnotificaciones = await _unitOfWork.EstadosNotificaciones.GetAllAsync();
-        return _mapper.Map<List<EstadoNotificacionDto>>(estadosnotificaciones);
+        var estadosnot = await _unitOfWork.EstadosNotificaciones.GetAllAsync();
+        return _mapper.Map<List<EstadoNotificacionDto>>(estadosnot);
     }
 
     [HttpPost]
@@ -38,14 +39,27 @@ public class EstadoNotificacionController : BaseController
 
     public async Task<ActionResult<EstadoNotificacion>> Post(EstadoNotificacionDto estadonotificacionDto)
     {
-        var estadonotificacion = _mapper.Map<EstadoNotificacion>(estadonotificacionDto);
-        this._unitOfWork.EstadosNotificaciones.Add(estadonotificacion);
+        var estadosnot = _mapper.Map<EstadoNotificacion>(estadonotificacionDto);
+
+        if (estadosnot.FechaCreacion == DateTime.MinValue)
+        {
+            estadosnot.FechaCreacion = DateTime.Now;
+            estadonotificacionDto.FechaCreacion = DateTime.Now;
+        }
+        if (estadosnot.FechaModificacion == DateTime.MinValue)
+        {
+            estadosnot.FechaModificacion = DateTime.Now;
+            estadonotificacionDto.FechaModificacion = DateTime.Now;  
+        }
+
+        _unitOfWork.EstadosNotificaciones.Add(estadosnot);
+
         await _unitOfWork.SaveAsync();
-        if (estadonotificacion == null )
+        if (estadosnot == null )
         {
             return BadRequest();
         }
-        estadonotificacionDto.Id = estadonotificacionDto.Id;
+        estadonotificacionDto.Id = estadosnot.Id;
         return CreatedAtAction(nameof(Post), new { id = estadonotificacionDto.Id }, estadonotificacionDto);
     }
 
@@ -56,12 +70,12 @@ public class EstadoNotificacionController : BaseController
 
     public async Task<ActionResult<EstadoNotificacionDto>> Get(int id)
     {
-        var estadonotificacion = await _unitOfWork.EstadosNotificaciones.GetByIdAsync(id);
-        if (estadonotificacion == null)
+        var estadosnot = await _unitOfWork.EstadosNotificaciones.GetByIdAsync(id);
+        if (estadosnot == null)
         {
             return NotFound();
         }
-        return _mapper.Map<EstadoNotificacionDto>(estadonotificacion);
+        return _mapper.Map<EstadoNotificacionDto>(estadosnot);
     }
 
     [HttpPut("{id}")]
@@ -71,10 +85,34 @@ public class EstadoNotificacionController : BaseController
 
     public async Task<ActionResult<EstadoNotificacionDto>> Put(int id, [FromBody] EstadoNotificacionDto estadonotificacionDto)
     {
-        if (estadonotificacionDto == null)
+        var estadosnot = _mapper.Map<EstadoNotificacion>(estadonotificacionDto);
+
+        if (estadosnot.Id == 0)
+        {
+            estadosnot.Id = id;
+        }
+        if (estadosnot.Id != id)
+        {
+            return BadRequest();
+        }
+        if (estadosnot == null)
+        {
             return NotFound();
-        var estadosnotificaciones = _mapper.Map<EstadoNotificacion>(estadonotificacionDto);
-        _unitOfWork.EstadosNotificaciones.Update(estadosnotificaciones);
+        }
+
+        if (estadosnot.FechaCreacion == DateTime.MinValue)
+        {
+            estadosnot.FechaCreacion = DateTime.Now;
+            estadonotificacionDto.FechaCreacion = DateTime.Now;
+        }
+        if (estadosnot.FechaModificacion == DateTime.MinValue)
+        {
+            estadosnot.FechaModificacion = DateTime.Now;
+            estadonotificacionDto.FechaModificacion = DateTime.Now;  
+        }
+
+        estadonotificacionDto.Id = estadosnot.Id;
+        _unitOfWork.EstadosNotificaciones.Update(estadosnot);
         await _unitOfWork.SaveAsync();
         return estadonotificacionDto;
     }
@@ -84,12 +122,12 @@ public class EstadoNotificacionController : BaseController
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult> Delete(int id)
     {
-        var estadonotificacion = await _unitOfWork.EstadosNotificaciones.GetByIdAsync(id);
-        if (estadonotificacion == null)
+        var estadosnot = await _unitOfWork.EstadosNotificaciones.GetByIdAsync(id);
+        if (estadosnot == null)
         {
             return NotFound();
         }
-        _unitOfWork.EstadosNotificaciones.Remove(estadonotificacion);
+        _unitOfWork.EstadosNotificaciones.Remove(estadosnot);
         await _unitOfWork.SaveAsync();
         return NoContent();
     }

@@ -11,5 +11,7 @@ public class GenericoVsSubmoduloDto
     public int IdGenericos { get; set; }
     public int IdSubmodulos { get; set; }
     public int IdRoles { get; set; }
+    public DateTime FechaCreacion { get; set; }
+    public DateTime FechaModificacion { get; set; }
     
 }
