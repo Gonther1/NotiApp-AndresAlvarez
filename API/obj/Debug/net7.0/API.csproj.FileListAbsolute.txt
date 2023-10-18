@@ -134,3 +134,5 @@ C:\Users\USER\Desktop\NotiApp-AndresAlvarez\API\obj\Debug\net7.0\refint\API.dll
 C:\Users\USER\Desktop\NotiApp-AndresAlvarez\API\obj\Debug\net7.0\API.pdb
 C:\Users\USER\Desktop\NotiApp-AndresAlvarez\API\obj\Debug\net7.0\API.genruntimeconfig.cache
 C:\Users\USER\Desktop\NotiApp-AndresAlvarez\API\obj\Debug\net7.0\ref\API.dll
+C:\Users\APM02-54\Desktop\NotiApp-AndresAlvarez\API\bin\Debug\net7.0\AspNetCoreRateLimit.dll
+C:\Users\APM02-54\Desktop\NotiApp-AndresAlvarez\API\bin\Debug\net7.0\Newtonsoft.Json.dll
