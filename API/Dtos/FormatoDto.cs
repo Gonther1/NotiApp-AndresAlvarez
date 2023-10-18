@@ -7,5 +7,6 @@ namespace API.Dtos;
 
 public class FormatoDto
 {
+    public int Id { get; set; }
     public string NombreFormato { get; set; }
 }

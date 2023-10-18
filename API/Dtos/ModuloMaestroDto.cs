@@ -7,5 +7,6 @@ namespace API.Dtos;
 
 public class ModuloMaestroDto
 {
+    public int Id { get; set; }
     public string NombreModulo { get; set; }
 }
