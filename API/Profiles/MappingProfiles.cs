@@ -38,6 +38,27 @@ public class MappingProfiles : Profile
 
         CreateMap<ModuloNotificacion, ModuloNotificacionDto>()
         .ReverseMap();
-        
+
+        CreateMap<PermisoGenerico, PermisoGenericoDto>()
+        .ReverseMap();
+
+        CreateMap<Radicado, RadicadoDto>()
+        .ReverseMap();
+
+        CreateMap<Rol, RolDto>()
+        .ReverseMap();
+
+        CreateMap<RolVsMaestro, RolvSMaestroDto>()
+        .ReverseMap();
+
+        CreateMap<SubModulo, SubModuloDto>()
+        .ReverseMap();
+
+        CreateMap<TipoNotificacion, TipoNotificacionDto>()
+        .ReverseMap();
+
+        CreateMap<TipoRequerimiento, TipoRequerimientoDto>()
+        .ReverseMap();
+
     }
 }
