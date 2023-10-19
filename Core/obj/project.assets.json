@@ -8,19 +8,19 @@
     "net7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\APM02-54\\.nuget\\packages\\": {}
+    "C:\\Users\\abcd\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\APM02-54\\Desktop\\NotiApp-AndresAlvarez\\Core\\Core.csproj",
+      "projectUniqueName": "C:\\Users\\abcd\\Desktop\\NotiApp-AndresAlvarez\\Core\\Core.csproj",
       "projectName": "Core",
-      "projectPath": "C:\\Users\\APM02-54\\Desktop\\NotiApp-AndresAlvarez\\Core\\Core.csproj",
-      "packagesPath": "C:\\Users\\APM02-54\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\APM02-54\\Desktop\\NotiApp-AndresAlvarez\\Core\\obj\\",
+      "projectPath": "C:\\Users\\abcd\\Desktop\\NotiApp-AndresAlvarez\\Core\\Core.csproj",
+      "packagesPath": "C:\\Users\\abcd\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\abcd\\Desktop\\NotiApp-AndresAlvarez\\Core\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\APM02-54\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\abcd\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
@@ -59,7 +59,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }
